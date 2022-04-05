@@ -1,0 +1,50 @@
+{% extends 'appcoder/padre.html' %}
+    {% load static %}
+    
+    {% block contenidoquecambia %}
+
+        <p>Ingrese su nuevo pedido</p>
+        <form action="/AppCoder/pedidoformulario/" method="POST">{% csrf_token %}
+            <p>Cuit <input type="text" name="cuit" placeholder="Ingrese su C.U.I.T."></p>
+            <p>Curso <input type="text" name="curso" placeholder="Ingrese curso"></p>
+            <p>Camada <input type="nombre" name="camada" placeholder="Ingrese camada"> </p>
+            <input type="submit" name="enviar">
+        </form>
+
+
+        <h1>Articulos</h1>
+
+
+        <table>
+            <thead>
+                <tr>
+                  
+                    <td>Nombre</td>
+                    <td>Apellido </td>
+                    <td>dni </td>
+                    <td>fecha nacimiento </td>
+        
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% if familia %}
+                
+                    {% for f  in familia  %}
+                    <tr>
+                        <td>{{f.nombre}}</td>
+                        <td>{{f.apellido}}</td>
+                        <td>{{f.dni}}</td>
+                        <td>{{f.fecha_nacimiento}}</td>
+        
+                    {% endfor %}
+                </tr>
+                    
+                {% else %}
+                    <h1>no hay registros</h1>
+                {% endif %}
+                    
+            </tbody>
+        </table>
+    </body>
+    {% endblock contenidoquecambia %}

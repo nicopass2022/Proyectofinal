@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos</title>
+</head>
+<body>
+   <h3>"Cursos"</h3> 
+
+<table>
+    <thead>
+        <tr>
+          
+            <td>Curso</td>
+            <td>Camada </td>
+
+        </tr>
+    </thead>
+    <tbody>
+        
+        {% if curso %}
+        
+            {% for c  in curso  %}
+            <tr>
+                <td>{{c.nombre}}</td>
+                <td>{{c.camada}}</td>
+
+            {% endfor %}
+        </tr>
+            
+        {% else %}
+            <h1>no hay registros</h1>
+        {% endif %}
+            
+    </tbody>
+</table>
+</body>
+</html>
