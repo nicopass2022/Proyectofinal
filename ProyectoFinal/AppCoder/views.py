@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.template import Context, Template
 from django.template import loader
 
+from proyectofinal.ProyectoFinal.AppCoder.forms import cursoformulario
+
 from .models import Articulos, Pedido
 # from .models import Curso, Familia, Profesor
 # from AppCoder.models import Profesor
@@ -65,7 +67,7 @@ def inicio(request):
 
 # #agregar articulos
 def agregaarticulos(request):
-
+    
         codigo=request.POST["codigo"]
         descripcion=request.POST["descripcion"]
         stock=request.POST["stock"]
@@ -99,12 +101,21 @@ def pedidoformulario(request):
 
 
     if request.method=="POST":
-        nombre=request.POST["curso"]
-        camada=request.POST["camada"]
-        micurso=Curso(nombre=nombre,camada=camada)
-        micurso.save()
-        #return HttpResponse(f"se genero curso {micurso.nombre} y la camada {micurso.camada}")
-        return render(request, "appcoder/cursos.html", {"nombre": nombre, "camada":camada})
+        #busco el formulario en forms.py
+        miformulario=cursoformulario(request.POST)
+        if miformulario.is_valid():
+            informacion=miformulario.cleaned_data
+            cuit=informacion["cuit"]
+            articulo=informacion["articulo"]
+            cantidad=informacion["cantidad"]
+
+
+        # nombre=request.POST["curso"]
+        # camada=request.POST["camada"]
+            micurso=Curso(nombre=nombre,camada=camada)
+            micurso.save()
+            #return HttpResponse(f"se genero curso {micurso.nombre} y la camada {micurso.camada}")
+            return render(request, "appcoder/cursos.html", {"nombre": nombre, "camada":camada})
         
         
         # curso= Curso , 

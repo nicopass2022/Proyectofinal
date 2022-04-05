@@ -4,6 +4,20 @@
 
 {% block contenidoquecambia %}
 <body>
+    <header class="masthead">
+        <div class="container position-relative">
+            <div class="row justify-content-center">
+                <div class="col-xl-6">
+                    <div class="text-center text-white">
+                        <!-- Page heading-->
+                        <h1 class="mb-5">Articulos</h1>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
         <h3>"Articulos"</h3> 
 
         <p>Ingrese Nuevo Articulo</p>
@@ -11,7 +25,18 @@
             <p>Codigo <input type="text" name="codigo" placeholder="Ingrese codigo de articulos"></p>
             <p>Descripcion <input type="text" name="descripcion" placeholder="Ingrese Descripcion"></p>
             <p>Stock <input type="text" name="stock" placeholder="Ingrese Stock"> </p>
+            <!-- dropdown list con articulos-->
+            <select name="select">
+
+                {% for f  in familia  %}
+                    <option value="{{f.Codigo}}">{{f.descripcion}}</option>
+
+                {% endfor %}
+            </select>
+           
             <input type="submit" name="enviar">
+
+        
         </form>
         <p></p>
         <p></p>
@@ -50,5 +75,6 @@
                     
             </tbody>
         </table>
+
 </body>
 {% endblock contenidoquecambia %}

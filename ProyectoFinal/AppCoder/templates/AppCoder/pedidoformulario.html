@@ -3,6 +3,20 @@
 
 {% block contenidoquecambia %}
 <body>
+    <header class="masthead">
+        <div class="container position-relative">
+            <div class="row justify-content-center">
+                <div class="col-xl-6">
+                    <div class="text-center text-white">
+                        <!-- Page heading-->
+                        <h1 class="mb-5">Pedidos</h1>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
         <p>Ingrese su nuevo pedido</p>
         <form action="/AppCoder/agregapedido/" method="POST">{% csrf_token %}
             <p>Cuit <input type="text" name="cuit" placeholder="Ingrese su C.U.I.T."></p>
