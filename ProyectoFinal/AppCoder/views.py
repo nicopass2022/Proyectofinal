@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.template import Context, Template
 from django.template import loader
 
-from proyectofinal.ProyectoFinal.AppCoder.forms import cursoformulario
+from AppCoder.forms import cursoformulario
 
 from .models import Articulos, Pedido
 # from .models import Curso, Familia, Profesor
@@ -109,15 +109,7 @@ def pedidoformulario(request):
             articulo=informacion["articulo"]
             cantidad=informacion["cantidad"]
 
-
-        # nombre=request.POST["curso"]
-        # camada=request.POST["camada"]
-            micurso=Curso(nombre=nombre,camada=camada)
-            micurso.save()
-            #return HttpResponse(f"se genero curso {micurso.nombre} y la camada {micurso.camada}")
-            return render(request, "appcoder/cursos.html", {"nombre": nombre, "camada":camada})
-        
-        
+                
         # curso= Curso , 
         # curso.save()
         # return render (request, "AppCoder/inicio.html")
