@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.template import Context, Template
 from django.template import loader
 
-from .models import Articulos
+from .models import Articulos, Pedido
 # from .models import Curso, Familia, Profesor
 # from AppCoder.models import Profesor
 
@@ -42,8 +42,8 @@ from .models import Articulos
 #     contexto= Context({"notas":listaNotas})
 #     return HttpResponse(plantilla.render(contexto))
 
-def profesores(request):
-    return render(request,"appcoder/profesores.html")
+def clientes(request):
+    return render(request,"appcoder/clientes.html")
     #return HttpResponse("vista de profesores")
 
 # def estudiantes(request):
@@ -88,8 +88,12 @@ def recuperar_articulos(request):
 
 
 def pedidoformulario(request):
-
-
+    #carga listado de articulos
+    articulos=Articulos.objects.all()
+    pedidos=Pedido.objects.all()
+ 
+    #contexto= Context({"p":profe})
+    #return render(request,"AppCoder/recuperar_articulos.html",{"familia":articulos})
 
 
 
@@ -106,4 +110,14 @@ def pedidoformulario(request):
         # curso= Curso , 
         # curso.save()
         # return render (request, "AppCoder/inicio.html")
-    return render(request, "AppCoder/pedidoformulario.html")
+    return render(request, "AppCoder/pedidoformulario.html",{"pedidos":pedidos})
+
+def agregapedido(request):
+
+        cuit=request.POST["cuit"]
+        articulo=request.POST["articulo"]
+        cantidad=request.POST["cantidad"]
+        descripcion=Pedido(idcliente=cuit, idarticulo=articulo,cantidad=cantidad)
+        descripcion.save()
+        return HttpResponse(f"se genero pedido")
+        #return render(request, "AppCoder/cursos.html", {"codigo": codigo, "descripcion":descripcion})

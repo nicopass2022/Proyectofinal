@@ -1,50 +1,69 @@
 {% extends 'appcoder/padre.html' %}
-    {% load static %}
-    
-    {% block contenidoquecambia %}
+{% load static %}
 
+{% block contenidoquecambia %}
+<body>
         <p>Ingrese su nuevo pedido</p>
-        <form action="/AppCoder/pedidoformulario/" method="POST">{% csrf_token %}
+        <form action="/AppCoder/agregapedido/" method="POST">{% csrf_token %}
             <p>Cuit <input type="text" name="cuit" placeholder="Ingrese su C.U.I.T."></p>
-            <p>Curso <input type="text" name="curso" placeholder="Ingrese curso"></p>
-            <p>Camada <input type="nombre" name="camada" placeholder="Ingrese camada"> </p>
+            <p>Articulo <input type="text" name="articulo" placeholder="Ingrese articulo"></p>
+            <p>Cantidad <input type="nombre" name="cantidad" placeholder="Ingrese cantidad"> </p>
             <input type="submit" name="enviar">
         </form>
 
 
-        <h1>Articulos</h1>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
 
 
-        <table>
-            <thead>
+        <h3>Listado de Pedidos</h3>
+   <p></p>
+   <p></p>
+    <table>
+        <thead>
+            <tr>
+          
+                <td>Nro Pedido</td>
+                <td>Cliente</td>
+                <td>Articulo</td>
+                <td>Cantidad/td>
+                <td>Entregado</td>
+           
+
+           </tr>
+        </thead>
+        <tbody>
+        
+            {% if pedidos %}
+        
+                {% for f  in pedidos  %}
                 <tr>
-                  
-                    <td>Nombre</td>
-                    <td>Apellido </td>
-                    <td>dni </td>
-                    <td>fecha nacimiento </td>
-        
+                    <td>{{f.id}}</td>
+                    <td>{{f.idcliente}}</td>
+                    <td>{{f.idarticulo}}</td>
+                    <td>{{f.cantidad}}</td>
+                    <td>{{f.entregado}}</td>
+              
+
+                {% endfor %}
                 </tr>
-            </thead>
-            <tbody>
-                
-                {% if familia %}
-                
-                    {% for f  in familia  %}
-                    <tr>
-                        <td>{{f.nombre}}</td>
-                        <td>{{f.apellido}}</td>
-                        <td>{{f.dni}}</td>
-                        <td>{{f.fecha_nacimiento}}</td>
-        
-                    {% endfor %}
-                </tr>
-                    
-                {% else %}
-                    <h1>no hay registros</h1>
-                {% endif %}
-                    
-            </tbody>
-        </table>
-    </body>
-    {% endblock contenidoquecambia %}
+            
+        {% else %}
+            <h1>no hay registros</h1>
+        {% endif %}
+            
+        </tbody>
+    </table>
+
+
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+
+
+</body>
+
+{% endblock contenidoquecambia %}

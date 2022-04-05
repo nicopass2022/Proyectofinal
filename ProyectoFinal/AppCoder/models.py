@@ -44,7 +44,7 @@ class Articulos(models.Model):
    stock = models.IntegerField("stock")
 
 class Pedido(models.Model):
-   Codigo=models.CharField("codigo", max_length=50)
+   #Codigo=models.AutoField("codigo")
    idcliente=models.IntegerField("idcliente")
    idarticulo = models.IntegerField("idarticulo")
    cantidad=models.IntegerField("cantidad", default="0")

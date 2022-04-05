@@ -4,51 +4,51 @@
 
 {% block contenidoquecambia %}
 <body>
-   <h3>"Articulos"</h3> 
+        <h3>"Articulos"</h3> 
 
-   <p>Ingrese Nuevo Articulo</p>
-   <form action="/AppCoder/agregaarticulos/" method="POST">{% csrf_token %}
-       <p>Codigo <input type="text" name="codigo" placeholder="Ingrese codigo de articulos"></p>
-       <p>Descripcion <input type="text" name="descripcion" placeholder="Ingrese Descripcion"></p>
-       <p>Stock <input type="text" name="stock" placeholder="Ingrese Stock"> </p>
-       <input type="submit" name="enviar">
-   </form>
-   <p></p>
-   <p></p>
-   <p></p>
-   <h3>Listado de Articulos</h3>
-   <p></p>
-   <p></p>
-    <table>
-        <thead>
-            <tr>
-          
-                <td>Codigo</td>
-                <td>Descripcion</td>
-                <td>Stock</td>
-           
+        <p>Ingrese Nuevo Articulo</p>
+        <form action="/AppCoder/agregaarticulos/" method="POST">{% csrf_token %}
+            <p>Codigo <input type="text" name="codigo" placeholder="Ingrese codigo de articulos"></p>
+            <p>Descripcion <input type="text" name="descripcion" placeholder="Ingrese Descripcion"></p>
+            <p>Stock <input type="text" name="stock" placeholder="Ingrese Stock"> </p>
+            <input type="submit" name="enviar">
+        </form>
+        <p></p>
+        <p></p>
+        <p></p>
+        <h3>Listado de Articulos</h3>
+        <p></p>
+        <p></p>
+            <table>
+                <thead>
+                    <tr>
+                
+                        <td>Codigo</td>
+                        <td>Descripcion</td>
+                        <td>Stock</td>
+                
 
-           </tr>
-        </thead>
-        <tbody>
-        
-            {% if familia %}
-        
-                {% for f  in familia  %}
-                <tr>
-                    <td>{{f.codigo}}</td>
-                    <td>{{f.descripcion}}</td>
-                    <td>{{f.stock}}</td>
-              
-
-                {% endfor %}
                 </tr>
-            
-        {% else %}
-            <h1>no hay registros</h1>
-        {% endif %}
-            
-    </tbody>
-</table>
+                </thead>
+                <tbody>
+                
+                    {% if familia %}
+                
+                        {% for f  in familia  %}
+                        <tr>
+                            <td>{{f.Codigo}}</td>
+                            <td>{{f.descripcion}}</td>
+                            <td>{{f.stock}}</td>
+                    
+
+                        {% endfor %}
+                        </tr>
+                    
+                {% else %}
+                    <h1>no hay registros</h1>
+                {% endif %}
+                    
+            </tbody>
+        </table>
 </body>
 {% endblock contenidoquecambia %}
