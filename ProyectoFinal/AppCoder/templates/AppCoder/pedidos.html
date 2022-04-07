@@ -1,7 +1,7 @@
 {% extends 'appcoder/padre.html' %}
 {% load static %}
 
-{% block contenidoquecambia %}
+{% block ContenidoqCambia %}
 <body>
     <header class="masthead">
         <div class="container position-relative">
@@ -17,6 +17,11 @@
             </div>
         </div>
     </header>
+
+    <h3>"Productos"</h3> 
+    {% if articulo %}
+        <H1>Se agrego correctamente el pedido con el articulo {{articulo}}  </H1>
+    {% endif %}
         <p>Ingrese su nuevo pedido</p>
         <form action="/AppCoder/agregapedido/" method="POST">{% csrf_token %}
             <p>Cuit <input type="text" name="cuit" placeholder="Ingrese su C.U.I.T."></p>
@@ -69,6 +74,7 @@
         {% endif %}
             
         </tbody>
+        
     </table>
 
 
@@ -76,8 +82,42 @@
     <p></p>
     <p></p>
     <p></p>
+    <h3>Listado de Productos</h3>
+    <p></p>
+    <p></p>
+        <table>
+            <thead>
+                <tr>
+            
+                    <td>Codigo</td>
+                    <td>Descripcion</td>
+                    <td>Stock</td>
+            
+
+            </tr>
+            </thead>
+            <tbody>
+            
+                {% if productos %}
+            
+                    {% for f  in productos  %}
+                    <tr>
+                        <td>{{f.Codigo}}</td>
+                        <td>{{f.descripcion}}</td>
+                        <td>{{f.stock}}</td>
+                
+
+                    {% endfor %}
+                    </tr>
+                
+            {% else %}
+                <h1>no hay registros</h1>
+            {% endif %}
+                
+        </tbody>
+    </table>
 
 
 </body>
 
-{% endblock contenidoquecambia %}
+{% endblock ContenidoqCambia %}

@@ -18,20 +18,24 @@
         </div>
     </header>
         <h3>"Productos"</h3> 
+        {% if codigo %}
+            <H1>Se agrego correctamente el producto {{descripcion}} con el codigo {{codigo}} </H1>
+        {% endif %}
+
 
         <p>Ingrese Nuevo Producto</p>
         <form action="/AppCoder/agregaarticulos/" method="POST">{% csrf_token %}
             <p>Codigo <input type="text" name="codigo" placeholder="Ingrese codigo de producto"></p>
-            <p>Descripcion <input type="text" name="descripción" placeholder="Ingrese Descripcion"></p>
+            <p>Descripcion <input type="text" name="descripcion" placeholder="Ingrese Descripcion"></p>
             <p>Stock <input type="text" name="stock" placeholder="Ingrese Stock"> </p>
             <!-- dropdown list con articulos-->
-            <select name="select">
+            <!--<select name="select">
 
                 {% for p  in productos  %}
                     <option value="{{f.Codigo}}">{{f.descripcion}}</option>
 
                 {% endfor %}
-            </select>
+            </select>-->
            
             <input type="submit" name="enviar">
 
