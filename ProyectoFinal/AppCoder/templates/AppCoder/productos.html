@@ -1,8 +1,7 @@
-
 {% extends 'appcoder/padre.html' %}
 {% load static %}
 
-{% block contenidoquecambia %}
+{% block ContenidoqCambia %}
 <body>
     <header class="masthead">
         <div class="container position-relative">
@@ -10,7 +9,7 @@
                 <div class="col-xl-6">
                     <div class="text-center text-white">
                         <!-- Page heading-->
-                        <h1 class="mb-5">Articulos</h1>
+                        <h1 class="mb-5">Productos</h1>
 
 
                     </div>
@@ -18,17 +17,17 @@
             </div>
         </div>
     </header>
-        <h3>"Articulos"</h3> 
+        <h3>"Productos"</h3> 
 
-        <p>Ingrese Nuevo Articulo</p>
+        <p>Ingrese Nuevo Producto</p>
         <form action="/AppCoder/agregaarticulos/" method="POST">{% csrf_token %}
-            <p>Codigo <input type="text" name="codigo" placeholder="Ingrese codigo de articulos"></p>
-            <p>Descripcion <input type="text" name="descripcion" placeholder="Ingrese Descripcion"></p>
+            <p>Codigo <input type="text" name="codigo" placeholder="Ingrese codigo de producto"></p>
+            <p>Descripcion <input type="text" name="descripción" placeholder="Ingrese Descripcion"></p>
             <p>Stock <input type="text" name="stock" placeholder="Ingrese Stock"> </p>
             <!-- dropdown list con articulos-->
             <select name="select">
 
-                {% for f  in familia  %}
+                {% for p  in productos  %}
                     <option value="{{f.Codigo}}">{{f.descripcion}}</option>
 
                 {% endfor %}
@@ -41,7 +40,7 @@
         <p></p>
         <p></p>
         <p></p>
-        <h3>Listado de Articulos</h3>
+        <h3>Listado de Productos</h3>
         <p></p>
         <p></p>
             <table>
@@ -57,9 +56,9 @@
                 </thead>
                 <tbody>
                 
-                    {% if familia %}
+                    {% if productos %}
                 
-                        {% for f  in familia  %}
+                        {% for f  in productos  %}
                         <tr>
                             <td>{{f.Codigo}}</td>
                             <td>{{f.descripcion}}</td>
@@ -77,4 +76,4 @@
         </table>
 
 </body>
-{% endblock contenidoquecambia %}
+{% endblock ContenidoqCambia %}
