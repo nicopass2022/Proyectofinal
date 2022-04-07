@@ -1,6 +1,86 @@
 {% extends 'appcoder/padre.html' %}
-    {% load static %}
-    
-    {% block contenidoquecambia %}
-        <p>contenido cambiado Clientes</p>
-    {% endblock contenidoquecambia %}
+{% load static %}
+
+{% block ContenidoqCambia %}
+<body>
+    <header class="masthead">
+        <div class="container position-relative">
+            <div class="row justify-content-center">
+                <div class="col-xl-6">
+                    <div class="text-center text-white">
+                        <!-- Page heading-->
+                        <h1 class="mb-5">Clientes</h1>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+        <h3>"Clientes"</h3> 
+        {% if razonsocial %}
+            <H1>Se agrego correctamente el cliente "{{razonsocial}}"" con el CUIT {{cuit}} </H1>
+        {% endif %}
+
+
+        <p>Ingrese Nuevo Producto</p>
+        <form action="/AppCoder/agregaclientes/" method="POST">{% csrf_token %}
+            <p>Nombre <input type="text" name="nombre" placeholder="Ingrese nombre"></p>
+            <p>Apellido <input type="text" name="apellido" placeholder="Ingrese apellido"></p>
+            <p>Razon Social <input type="text" name="razonsocial" placeholder="Ingrese razon social"> </p>
+            <p>C.U.I.T. <input type="text" name="cuit" placeholder="Ingrese cuit"> </p>
+            <!-- dropdown list con articulos-->
+            <!--<select name="select">
+
+                {% for p  in productos  %}
+                    <option value="{{f.Codigo}}">{{f.descripcion}}</option>
+
+                {% endfor %}
+            </select>-->
+           
+            <input type="submit" name="enviar">
+
+        
+        </form>
+        <p></p>
+        <p></p>
+        <p></p>
+        <h3>Listado de Clientes</h3>
+        <p></p>
+        <p></p>
+            <table>
+                <thead>
+                    <tr>
+                
+                        <td>Nombre</td>
+                        <td>Apellido</td>
+                        <td>Razon Social</td>
+                        <td>C.U.I.T.</td>
+                
+
+                </tr>
+                </thead>
+                <tbody>
+                
+                    {% if clientes %}
+                
+                        {% for f  in clientes  %}
+                        <tr>
+                            <td>{{f.nombre}}</td>
+                            <td>{{f.apellido}}</td>
+                            <td>{{f.razonsocial}}</td>
+                            <td>{{f.cuit}}</td>
+                    
+
+                        {% endfor %}
+                        </tr>
+                    
+                {% else %}
+                    <h1>no hay registros</h1>
+                {% endif %}
+                    
+            </tbody>
+        </table>
+
+</body>
+{% endblock ContenidoqCambia %}
